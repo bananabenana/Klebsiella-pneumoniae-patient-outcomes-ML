@@ -1,2 +1,178 @@
 # Klebsiella-pneumoniae-patient-outcomes-ML
-Repository hosting machine learning models and scripts for predicting the clinical outcomes of Klebsiella pnenmonae infections
+Repository hosting machine learning models and scripts for predicting the clinical outcomes of _Klebsiella pneumoniae_ infections. 
+
+
+## Installation
+```bash
+# Copy repo
+git clone https://github.com/bananabenana/Klebsiella-pneumoniae-patient-outcomes-ML
+
+# Move into downloaded directory
+cd Klebsiella-pneumoniae-patient-outcomes-ML
+
+# Create environment
+conda env create -f environment.yml
+
+# Activate environment
+conda activate catboost_ML_env
+
+# Test software
+python patient_early_predictions.py --help
+
+```
+
+## Quickstart
+
+### Patient predictions using gradient-boosting models
+If you would like to use these models to run test patient data, see below
+
+#### Run patient predictions using the Clinical+Genomic models
+1. Fill appropriate columns in: `Models/Clinical+Genomic/new_patients.tsv`
+2. Run the following:
+```bash
+# Change to directory
+cd deployable_prediction_models
+
+# Activate environment
+conda activate catboost_ML
+
+# Set variables
+model="Clinical+Genomic"
+model_path="Models/${model}"
+outdir="${model}_predictions"
+
+# Run script
+python patient_early_predictions.py \
+    --patient_data "${model_path}/new_patients.tsv" \
+    --model_dir "${model_path}" \
+    --config "${model_path}/outcome_config.json" \
+    --output "${outdir}"/patient_predictions.tsv"
+```
+
+#### Run patient predictions using the 30-Minute-Clinical models
+1. Fill appropriate columns in: `Models/30-Minute-Clinical/new_patients.tsv`
+2. Run the following:
+```bash
+# Change to directory
+cd deployable_prediction_models
+
+# Activate environment
+conda activate catboost_ML
+
+# Set variables
+model="30-Minute-Clinical"
+model_path="Models/${model}"
+outdir="${model}_predictions"
+
+# Run script
+python patient_early_predictions.py \
+    --patient_data "${model_path}/new_patients.tsv" \
+    --model_dir "${model_path}" \
+    --config "${model_path}/outcome_config.json" \
+    --output "${outdir}"/patient_predictions.tsv"
+```
+
+
+### Model training used in manuscript
+For this article, the following scripts were used for model training. Due to ethics, clinical data used as input matrix is available upon request. Please refer to data accessibility section of {doi}
+
+#### First round of model training to identify important features
+```bash
+# Activate environment
+conda activate catboost_ML
+
+# Set variables
+round=v1
+train_script="${round}_training.py"
+
+# Create dirs
+mkdir -p $round/input $round/output; cd $round
+
+# Run script
+python -u $train_script
+
+cd ..
+```
+
+#### Second round of model training to identify top n features for feature selection
+```bash
+# Set variables
+round=v2
+train_script="${round}_training.py"
+
+# Create dirs
+mkdir -p $round/input $round/output; cd $round
+
+# Run script
+python -u $train_script
+
+cd ..
+```
+
+#### Third round of model training for hyperparameter optimisation using selected features
+```bash
+# Set variables
+round=v3
+train_script="${round}_training.py"
+
+# Create dirs
+mkdir -p $round/input $round/output; cd $round
+
+# Generate new v3 config.json and a v3 matrix file to optimise loading times
+python v3_ML_hyperparam_opt_prep.py \
+  --matrix ../v2/input/v2_30_mins_patient_mdata.tsv \
+  --config ../v2/input/outcome_config_v2.json \
+  --top_n_features 50 \
+  --top_n_exceptions input/all_targets_top_n_median_exceptions.tsv \
+  --outdir input
+
+# Run script
+python -u $train_script
+
+cd ..
+```
+
+#### Final round of model training to fully train hyperparameter-optimised models
+```bash
+# Set variables
+round=v4
+train_script="${round}_training.py"
+
+# Create dirs
+mkdir -p $round/input $round/output; cd $round
+
+# Run script
+python -u $train_script
+
+cd ..
+```
+
+
+## Reference
+
+- To update: {doi}
+
+
+## Authors
+
+- Ben Vezina 1,4#*
+- Pengcheng Du 2#
+- Yunfei Tang 3
+- Nenad Macesic 1,4,5
+- Hoai-An Nguyen 1,4
+- Kelly L. Wyres 1,4,6
+- Gianluca Morroni 7,8
+- Chao Liu 3,+*
+- Margaret M. C. Lam 1,4,+*
+```
+1 Department of Infectious Diseases, School of Translational Medicine, Monash University, Melbourne, Victoria, Australia
+2 Medical Research Center, Beijing Institute of Respiratory Medicine and Beijing Chao-Yang Hospital, Capital Medical University, Beijing, China
+3 Department of Infectious Disease, Peking University Third Hospital, Beijing, China
+4 Centre to Impact AMR, Monash University, Clayton, Victoria, Australia
+5 Infection Prevention & Healthcare Epidemiology, Alfred Health, Melbourne, Australia.
+6 Department of Infection Biology, London School of Hygiene and Tropical Medicine, London, UK
+7 Microbiology Unit, Department of Biomedical Sciences & Public Health, Polytechnic University of Marche, Ancona, Italy
+8 SOS Microbiologia, SOD Medicina di Laboratorio, Azienda Ospedaliero Universitaria delle Marche, Ancona, Italy
+# These authors contributed equally
++ These authors contributed equally
+```
