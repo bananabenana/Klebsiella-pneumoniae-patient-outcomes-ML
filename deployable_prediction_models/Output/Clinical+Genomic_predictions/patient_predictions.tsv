@@ -1,0 +1,10 @@
+Patient_ID	Clinical_outcome	Risk_label	Predictive_value	Model	Optimal_threshold_mean	Optimal_threshold_ci_low	Optimal_threshold_ci_high	Optimal_threshold_delta	Number_features_present_in_input_data	Ideal_number_features	Feature_coverage_percent	Notes
+fake_patient_1	Mortality	High risk	0.41442464687965586	CatBoost	0.3084	0.2025	0.4144	0.10594999999999999	50	50	100.0	Sufficient feature coverage
+fake_patient_1	Poor prognosis	High risk	0.9823138257324141	LightGBM	0.3432	0.1642	0.5221	0.17895	50	50	100.0	Sufficient feature coverage
+fake_patient_1	Sepsis	High risk	0.9877608953839714	LightGBM	0.5475	0.5076	0.5875	0.039949999999999986	50	50	100.0	Sufficient feature coverage
+fake_patient_2	Mortality	Low risk	0.060802570132649496	CatBoost	0.3084	0.2025	0.4144	0.10594999999999999	50	50	100.0	Sufficient feature coverage
+fake_patient_2	Poor prognosis	Low risk	0.025982380954715126	LightGBM	0.3432	0.1642	0.5221	0.17895	50	50	100.0	Sufficient feature coverage
+fake_patient_2	Sepsis	Low risk	0.42414890630005875	LightGBM	0.5475	0.5076	0.5875	0.039949999999999986	50	50	100.0	Sufficient feature coverage
+fake_patient_3	Mortality	Low risk	0.014179382700480787	CatBoost	0.3084	0.2025	0.4144	0.10594999999999999	50	50	100.0	Sufficient feature coverage
+fake_patient_3	Poor prognosis	Low risk	0.0039013899107336355	LightGBM	0.3432	0.1642	0.5221	0.17895	50	50	100.0	Sufficient feature coverage
+fake_patient_3	Sepsis	Low risk	0.10503934243100366	LightGBM	0.5475	0.5076	0.5875	0.039949999999999986	50	50	100.0	Sufficient feature coverage

@@ -1,0 +1,16 @@
+Patient_ID	Clinical_outcome	Risk_label	Predictive_value	Model	Optimal_threshold_mean	Optimal_threshold_ci_low	Optimal_threshold_ci_high	Optimal_threshold_delta	Number_features_present_in_input_data	Ideal_number_features	Feature_coverage_percent	Notes
+fake_patient_1	Mortality	Low risk	0.034348438555448946	CatBoost	0.2399	0.167	0.3128	0.0729	10	10	100.0	Sufficient feature coverage
+fake_patient_1	Poor prognosis	Low risk	0.0456121004989064	CatBoost	0.2769	0.1899	0.364	0.08704999999999999	50	50	100.0	Sufficient feature coverage
+fake_patient_1	Sepsis	High risk	0.9844612817804952	LightGBM	0.4084	0.347	0.4698	0.06140000000000001	20	20	100.0	Sufficient feature coverage
+fake_patient_2	Mortality	Intermediate risk - interpret with clinical context	0.26752521990087	CatBoost	0.2399	0.167	0.3128	0.0729	10	10	100.0	Sufficient feature coverage
+fake_patient_2	Poor prognosis	Intermediate risk - interpret with clinical context	0.342902764769495	CatBoost	0.2769	0.1899	0.364	0.08704999999999999	50	50	100.0	Sufficient feature coverage
+fake_patient_2	Sepsis	Low risk	0.03668419897421741	LightGBM	0.4084	0.347	0.4698	0.06140000000000001	20	20	100.0	Sufficient feature coverage
+fake_patient_3	Mortality	High risk	0.35348816026298685	CatBoost	0.2399	0.167	0.3128	0.0729	10	10	100.0	Sufficient feature coverage
+fake_patient_3	Poor prognosis	High risk	0.4285209540130131	CatBoost	0.2769	0.1899	0.364	0.08704999999999999	50	50	100.0	Sufficient feature coverage
+fake_patient_3	Sepsis	High risk	0.9732870514208148	LightGBM	0.4084	0.347	0.4698	0.06140000000000001	20	20	100.0	Sufficient feature coverage
+fake_patient_4	Mortality	High risk	0.6471551389058404	CatBoost	0.2399	0.167	0.3128	0.0729	10	10	100.0	Sufficient feature coverage
+fake_patient_4	Poor prognosis	High risk	0.9194195803145093	CatBoost	0.2769	0.1899	0.364	0.08704999999999999	50	50	100.0	Sufficient feature coverage
+fake_patient_4	Sepsis	High risk	0.9885065345635621	LightGBM	0.4084	0.347	0.4698	0.06140000000000001	20	20	100.0	Sufficient feature coverage
+fake_patient_5	Mortality	Intermediate risk - interpret with clinical context	0.2215178857443809	CatBoost	0.2399	0.167	0.3128	0.0729	10	10	100.0	Sufficient feature coverage
+fake_patient_5	Poor prognosis	Intermediate risk - interpret with clinical context	0.2236873075461866	CatBoost	0.2769	0.1899	0.364	0.08704999999999999	50	50	100.0	Sufficient feature coverage
+fake_patient_5	Sepsis	Low risk	0.2068851922886499	LightGBM	0.4084	0.347	0.4698	0.06140000000000001	20	20	100.0	Sufficient feature coverage

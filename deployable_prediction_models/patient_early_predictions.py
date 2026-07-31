@@ -1,4 +1,5 @@
 import os
+import glob
 import json
 import argparse
 import pandas as pd
@@ -51,18 +52,24 @@ def prepare_features(input_df, feature_types):
 def load_model(model_name, model_dir, target):
 
     if model_name == "CatBoost":
-        model_path = os.path.join(
-            model_dir, f"catboost_full_{target}.cbm"
-        )
+        pattern = os.path.join(model_dir, f"*{target}*CatBoost*.cbm")
+        model_path = glob.glob(pattern)
+
+        if len(model_path) != 1:
+            raise FileNotFoundError(f"Expected one CatBoost model, found: {model_path}")
+
         model = CatBoostClassifier()
-        model.load_model(model_path)
+        model.load_model(model_path[0])
         return model
 
     elif model_name == "LightGBM":
-        model_path = os.path.join(
-            model_dir, f"lightgbm_full_{target}.txt"
-        )
-        booster = lgb.Booster(model_file=model_path)
+        pattern = os.path.join(model_dir, f"*{target}*LightGBM*.txt")
+        model_path = glob.glob(pattern)
+
+        if len(model_path) != 1:
+            raise FileNotFoundError(f"Expected one LightGBM model, found: {model_path}")
+
+        booster = lgb.Booster(model_file=model_path[0])
         return booster
 
     else:
