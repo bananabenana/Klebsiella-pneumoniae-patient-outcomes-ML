@@ -27,7 +27,9 @@ python patient_early_predictions.py --help
 If you would like to use these models to run test patient data, see below
 
 #### Run patient predictions using the Clinical+Genomic models
-1. Fill appropriate columns in: `Input/Clinical+Genomic_new_patients.tsv`. Leave any missing data as a blank cell
+1. Fill appropriate columns in: `Input/Clinical+Genomic_new_patients.tsv`
+    - Leave any missing data as a blank cell
+    - This includes 5 rows of simulated patient data as example input
 2. Run the following:
 ```bash
 # Change to directory
@@ -36,21 +38,26 @@ cd deployable_prediction_models
 # Activate environment
 conda activate catboost_ML
 
-# Set variables
+# Set variables for Clinical+Genomic
 model="Clinical+Genomic"
 model_path="Models/${model}"
 outdir="Output/${model}_predictions"
 
+# Make outdir
+mkdir "${outdir}"
+
 # Run script
 python patient_early_predictions.py \
-    --patient_data "${model_path}/new_patients.tsv" \
+    --patient_data "Input/${model}_new_patients.tsv" \
     --model_dir "${model_path}" \
     --config "${model_path}/outcome_config.json" \
     --output "${outdir}/patient_predictions.tsv"
 ```
 
 #### Run patient predictions using the 30-Minute-Clinical models
-1. Fill appropriate columns in: `Input/30-Minute-Clinical_new_patients.tsv`.  Leave any missing data as a blank cell
+1. Fill appropriate columns in: `Input/30-Minute-Clinical_new_patients.tsv`.
+    - Leave any missing data as a blank cell
+    - This includes 5 rows of simulated patient data as example input
 2. Run the following:
 ```bash
 # Change to directory
@@ -59,17 +66,20 @@ cd deployable_prediction_models
 # Activate environment
 conda activate catboost_ML
 
-# Set variables
+# Set variables for 30-Minute-Clinical
 model="30-Minute-Clinical"
 model_path="Models/${model}"
 outdir="Output/${model}_predictions"
 
+# Make outdir
+mkdir "${outdir}"
+
 # Run script
 python patient_early_predictions.py \
-    --patient_data "${model_path}/new_patients.tsv" \
+    --patient_data "Input/${model}_new_patients.tsv" \
     --model_dir "${model_path}" \
     --config "${model_path}/outcome_config.json" \
-    --output "${outdir}"/patient_predictions.tsv"
+    --output "${outdir}/patient_predictions.tsv"
 ```
 
 
