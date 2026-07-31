@@ -39,14 +39,14 @@ conda activate catboost_ML
 # Set variables
 model="Clinical+Genomic"
 model_path="Models/${model}"
-outdir="${model}_predictions"
+outdir="Output/${model}_predictions"
 
 # Run script
 python patient_early_predictions.py \
     --patient_data "${model_path}/new_patients.tsv" \
     --model_dir "${model_path}" \
     --config "${model_path}/outcome_config.json" \
-    --output "${outdir}"/patient_predictions.tsv"
+    --output "${outdir}/patient_predictions.tsv"
 ```
 
 #### Run patient predictions using the 30-Minute-Clinical models
@@ -62,7 +62,7 @@ conda activate catboost_ML
 # Set variables
 model="30-Minute-Clinical"
 model_path="Models/${model}"
-outdir="${model}_predictions"
+outdir="Output/${model}_predictions"
 
 # Run script
 python patient_early_predictions.py \
