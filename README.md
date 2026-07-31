@@ -1,4 +1,4 @@
-# Klebsiella-pneumoniae-patient-outcomes-ML
+<img width="1041" height="145" alt="image" src="https://github.com/user-attachments/assets/c6d27ecb-e0d7-4706-b135-bbda4dc57b10" /># Klebsiella-pneumoniae-patient-outcomes-ML
 Repository hosting machine learning models and scripts for predicting the clinical outcomes of _Klebsiella pneumoniae_ infections. 
 
 
@@ -81,6 +81,27 @@ python patient_early_predictions.py \
     --config "${model_path}/outcome_config.json" \
     --output "${outdir}/patient_predictions.tsv"
 ```
+
+#### Expected outputs
+
+You will get a `patient_predictions.tsv` file that looks like this:
+
+| Patient_ID     | Clinical_outcome | Risk_label                                          | Predictive_value | Model    | Optimal_threshold_mean | Optimal_threshold_ci_low | Optimal_threshold_ci_high | Optimal_threshold_delta | Number_features_present_in_input_data | Ideal_number_features | Feature_coverage_percent | Notes                       |
+| -------------- | ---------------- | --------------------------------------------------- | ---------------- | -------- | ---------------------- | ------------------------ | ------------------------- | ----------------------- | ------------------------------------- | --------------------- | ------------------------ | --------------------------- |
+| fake_patient_1 | Mortality        | Low risk                                            | 0.034348         | CatBoost | 0.2399                 | 0.167                    | 0.3128                    | 0.0729                  | 10                                    | 10                    | 100                      | Sufficient feature coverage |
+| fake_patient_1 | Poor prognosis   | Low risk                                            | 0.045612         | CatBoost | 0.2769                 | 0.1899                   | 0.364                     | 0.08705                 | 50                                    | 50                    | 100                      | Sufficient feature coverage |
+| fake_patient_1 | Sepsis           | High risk                                           | 0.984461         | LightGBM | 0.4084                 | 0.347                    | 0.4698                    | 0.0614                  | 20                                    | 20                    | 100                      | Sufficient feature coverage |
+| fake_patient_2 | Mortality        | Intermediate risk - interpret with clinical context | 0.267525         | CatBoost | 0.2399                 | 0.167                    | 0.3128                    | 0.0729                  | 10                                    | 10                    | 100                      | Sufficient feature coverage |
+| fake_patient_2 | Poor prognosis   | Intermediate risk - interpret with clinical context | 0.342903         | CatBoost | 0.2769                 | 0.1899                   | 0.364                     | 0.08705                 | 50                                    | 50                    | 100                      | Sufficient feature coverage |
+
+
+The `Risk_label` column is the risk category for a particular patient and `Clinical_outcome`. We use guard-banding to prevent alarm fatigue caused by false-positives. Briefly, if the `Predictive_value` is within the 95% confidence interval, it will be called as "Intermediate risk" instead of "High risk".
+
+| Outcome label                                       | Predictive probability is                                |
+| --------------------------------------------------- | -------------------------------------------------------- |
+| High risk                                           | Above optimal threshold. Outside 95% confidence interval |
+| Intermediate risk - interpret with clinical context | Above optimal threshold. Within 95% confidence interval  |
+| Low risk                                            | Below optimal threshold                                  |
 
 
 ### Model training used in manuscript
