@@ -17,7 +17,7 @@ conda env create -f environment.yml
 conda activate catboost_ML_env
 
 # Test software
-python patient_early_predictions.py --help
+python deployable_prediction_models/patient_early_predictions.py --help
 
 ```
 
@@ -33,7 +33,7 @@ If you would like to use these models to run test patient data, see below
 2. Run the following:
 ```bash
 # Change to directory
-cd deployable_prediction_models
+cd Klebsiella-pneumoniae-patient-outcomes-ML/deployable_prediction_models
 
 # Activate environment
 conda activate catboost_ML
@@ -61,7 +61,7 @@ python patient_early_predictions.py \
 2. Run the following:
 ```bash
 # Change to directory
-cd deployable_prediction_models
+cd Klebsiella-pneumoniae-patient-outcomes-ML/deployable_prediction_models
 
 # Activate environment
 conda activate catboost_ML
