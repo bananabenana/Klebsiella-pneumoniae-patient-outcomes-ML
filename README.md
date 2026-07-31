@@ -27,7 +27,7 @@ python patient_early_predictions.py --help
 If you would like to use these models to run test patient data, see below
 
 #### Run patient predictions using the Clinical+Genomic models
-1. Fill appropriate columns in: `Models/Clinical+Genomic/new_patients.tsv`
+1. Fill appropriate columns in: `Models/Clinical+Genomic/new_patients.tsv`. Leave any missing data as a blank cell
 2. Run the following:
 ```bash
 # Change to directory
@@ -50,7 +50,7 @@ python patient_early_predictions.py \
 ```
 
 #### Run patient predictions using the 30-Minute-Clinical models
-1. Fill appropriate columns in: `Models/30-Minute-Clinical/new_patients.tsv`
+1. Fill appropriate columns in: `Models/30-Minute-Clinical/new_patients.tsv`.  Leave any missing data as a blank cell
 2. Run the following:
 ```bash
 # Change to directory
