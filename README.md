@@ -1,4 +1,4 @@
-<img width="1041" height="145" alt="image" src="https://github.com/user-attachments/assets/c6d27ecb-e0d7-4706-b135-bbda4dc57b10" /># Klebsiella-pneumoniae-patient-outcomes-ML
+# Klebsiella-pneumoniae-patient-outcomes-ML
 Repository hosting machine learning models and scripts for predicting the clinical outcomes of _Klebsiella pneumoniae_ infections. 
 
 
