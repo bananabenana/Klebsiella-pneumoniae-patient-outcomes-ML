@@ -1,0 +1,136 @@
+{
+  "Mortality_binary": {
+    "exclude_predictors": [
+      "Mortality_binary",
+	  "Poor_prognosis_binary"
+    ]
+  },
+  "Sepsis": {
+    "exclude_predictors": [
+      "Sepsis",
+      "Septic_shock",
+      "Mortality_binary",
+	  "Poor_prognosis_binary",
+	  "Initial_treatment_failure",
+  	  "Vasoactive",
+	  "Norepinephrine",
+	  "Metaraminol",
+	  "Dopamine",
+	  "Endotracheal_Intubation_Invasive_Mechanical_Ventilation",
+	  "Invasive_mechanical_ventilation",
+	  "Non_invasive_mechanical_ventilation",
+	  "Respiratory_support"
+    ]
+  },
+  "Septic_shock": {
+    "exclude_predictors": [
+      "Septic_shock",
+      "Mortality_binary",
+	  "Poor_prognosis_binary",
+	  "Initial_treatment_failure",
+	  "Vasoactive",
+	  "Norepinephrine",
+	  "Metaraminol",
+	  "Dopamine",
+	  "Endotracheal_Intubation_Invasive_Mechanical_Ventilation",
+	  "Invasive_mechanical_ventilation",
+	  "Non_invasive_mechanical_ventilation",
+	  "Respiratory_support"
+    ]
+  },
+  "Reinfection": {
+    "exclude_predictors": [
+      "Reinfection",
+	  "Readmission",
+      "Mortality_binary",
+	  "Poor_prognosis_binary",
+	  "Septic_shock",
+	  "Sepsis",
+	  "Vasoactive",
+	  "Norepinephrine",
+	  "Metaraminol",
+	  "Dopamine",
+	  "Respiratory_support",
+	  "Endotracheal_Intubation_Invasive_Mechanical_Ventilation",
+	  "Invasive_mechanical_ventilation",
+	  "Non_invasive_mechanical_ventilation"
+    ]
+  },
+  "Readmission": {
+    "exclude_predictors": [
+      "Readmission",
+	  "Reinfection",
+      "Mortality_binary",
+	  "Poor_prognosis_binary",
+	  "Septic_shock",
+	  "Sepsis",
+	  "Vasoactive",
+	  "Norepinephrine",
+	  "Metaraminol",
+	  "Dopamine",
+	  "Respiratory_support",
+	  "Endotracheal_Intubation_Invasive_Mechanical_Ventilation",
+	  "Invasive_mechanical_ventilation",
+	  "Non_invasive_mechanical_ventilation"
+    ]
+  },
+  "Poor_prognosis_binary": {
+    "exclude_predictors": [
+      "Poor_prognosis_binary",
+      "Mortality_binary"
+    ]
+  },
+  "Initial_treatment_failure": {
+    "exclude_predictors": [
+      "Initial_treatment_failure",
+      "Mortality_binary",
+	  "Poor_prognosis_binary",
+	  "Septic_shock",
+	  "Sepsis",
+	  "Respiratory_support",
+	  "Endotracheal_Intubation_Invasive_Mechanical_Ventilation",
+	  "Invasive_mechanical_ventilation",
+	  "Non_invasive_mechanical_ventilation",
+	  "Vasoactive",
+	  "Norepinephrine",
+	  "Metaraminol",
+	  "Dopamine"
+	]
+  },
+  "Respiratory_support": {
+	"exclude_predictors": [
+	  "Respiratory_support",
+      "Mortality_binary",
+	  "Poor_prognosis_binary",
+	  "Endotracheal_Intubation_Invasive_Mechanical_Ventilation",
+	  "Invasive_mechanical_ventilation",
+	  "Non_invasive_mechanical_ventilation",
+	  "Vasoactive",
+	  "Norepinephrine",
+	  "Metaraminol",
+	  "Dopamine",
+	  "Septic_shock",
+	  "Sepsis",
+	  "Initial_treatment_failure",
+	  "Oxygen_therapy"
+	]
+  },
+  "Vasoactive": {
+	"exclude_predictors": [
+	  "Vasoactive",
+      "Sepsis",
+      "Septic_shock",
+      "Mortality_binary",
+	  "Poor_prognosis_binary",
+	  "Norepinephrine",
+	  "Metaraminol",
+	  "Dopamine",
+	  "Respiratory_support",
+	  "Endotracheal_Intubation_Invasive_Mechanical_Ventilation",
+	  "Invasive_mechanical_ventilation",
+	  "Non_invasive_mechanical_ventilation",
+	  "Initial_treatment_failure",
+	  "Oxygen_therapy"
+	]
+  }
+}

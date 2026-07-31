@@ -1,0 +1,16 @@
+name: catboost_ML_env
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+dependencies:
+  - catboost=1.2.8
+  - pandas=2.3.3
+  - numpy=1.26.4
+  - optuna=4.6.0
+  - lightgbm=4.6.0
+  - pip:
+      - powershap==0.1.0.1
+      - scikit-learn==1.8.0
