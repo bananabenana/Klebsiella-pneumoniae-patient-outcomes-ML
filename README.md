@@ -24,7 +24,7 @@ python deployable_prediction_models/patient_early_predictions.py --help
 ## Quickstart
 
 ### Patient predictions using gradient-boosting models
-If you would like to use these models to run test patient data, see below
+If you would like to use these models to run test patient data, see below. Note that this is not approved for clinical use and is for research use only.
 
 #### Run patient predictions using the Clinical+Genomic models
 1. Fill appropriate columns in: `Input/Clinical+Genomic_new_patients.tsv`
@@ -207,3 +207,7 @@ cd ..
 # These authors contributed equally
 + These authors contributed equally
 ```
+
+## Disclaimer
+
+For research use only.
